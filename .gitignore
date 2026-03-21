@@ -1,26 +1,17 @@
-# ==========================================
-# 1. REGLA DE ORO: IGNORAR DEPENDENCIAS EN TODO EL PROYECTO
-# ==========================================
+# --- Dependencias (Node) ---
 node_modules/
-**/node_modules/      # <--- ESTO ES CLAVE: Ignora node_modules en CUALQUIER subcarpeta
+**/node_modules/
+package-lock.json
 
-# ==========================================
-# 2. FRONTEND (React + Vite)
-# ==========================================
+# --- Frontend (Vite/React) ---
 dist/
 dist-ssr/
 *.local
 .eslintcache
-
-# Archivos de entorno (SECRETOS)
 .env
 .env.*
-!.env.example
 
-# ==========================================
-# 3. BACKEND (Terraform / AWS Lambda)
-# ==========================================
-# Terraform
+# --- Backend & Infra (Terraform/AWS) ---
 .terraform/
 **/.terraform/
 *.tfstate
@@ -29,18 +20,11 @@ dist-ssr/
 *.tfvars.json
 *.tfplan
 .terraform.lock.hcl
-
-# Lambda Artifacts
-# Ignora los archivos .zip que genera Terraform para subir a AWS
 *.zip
 backend/lambda/tasks-api/*.zip
 
-# ==========================================
-# 4. SISTEMA Y EDITORES
-# ==========================================
-.vscode/*
-!.vscode/extensions.json
+# --- Sistema y Editores ---
+.vscode/
 .DS_Store
 Thumbs.db
 *.log
-npm-debug.log*
