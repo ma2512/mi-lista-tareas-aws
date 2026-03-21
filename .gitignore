@@ -1,62 +1,46 @@
 # ==========================================
-# 1. FRONTEND (React + Vite)
+# 1. REGLA DE ORO: IGNORAR DEPENDENCIAS EN TODO EL PROYECTO
 # ==========================================
 node_modules/
-frontend/node_modules/
+**/node_modules/      # <--- ESTO ES CLAVE: Ignora node_modules en CUALQUIER subcarpeta
+
+# ==========================================
+# 2. FRONTEND (React + Vite)
+# ==========================================
 dist/
-frontend/dist/
 dist-ssr/
 *.local
+.eslintcache
 
 # Archivos de entorno (SECRETOS)
 .env
-frontend/.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env.*
+!.env.example
 
 # ==========================================
-# 2. BACKEND (Terraform / AWS)
+# 3. BACKEND (Terraform / AWS Lambda)
 # ==========================================
-# Ignora binarios y plugins pesados
+# Terraform
 .terraform/
-backend/.terraform/
-
-# Ignora el estado de la infraestructura (CONTIENE SECRETOS)
+**/.terraform/
 *.tfstate
 *.tfstate.*
-backend/*.tfstate
-backend/*.tfstate.*
-
-# Ignora variables privadas
 *.tfvars
 *.tfvars.json
-backend/*.tfvars
-backend/*.tfvars.json
-
-# Archivos de log y planes de ejecución
 *.tfplan
-backend/*.tfplan
-crash.log
-backend/crash.log
+.terraform.lock.hcl
+
+# Lambda Artifacts
+# Ignora los archivos .zip que genera Terraform para subir a AWS
+*.zip
+backend/lambda/tasks-api/*.zip
 
 # ==========================================
-# 3. SISTEMA Y EDITORES
+# 4. SISTEMA Y EDITORES
 # ==========================================
 .vscode/*
 !.vscode/extensions.json
-.idea/
 .DS_Store
 Thumbs.db
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-
-# Logs de error
-logs
 *.log
 npm-debug.log*
-yarn-debug.log*
