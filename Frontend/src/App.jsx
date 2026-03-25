@@ -148,7 +148,7 @@ function App() {
           <div className="login-card">
             <h2>{needsConfirmation ? "Verificar Cuenta" : isLogin ? "¡Hola!" : "Únete"}</h2>
             <p className="subtitle">
-              {needsConfirmation ? `Código enviado a ${email}` : "Gestiona tus tareas con AWS & Terraform"}
+              {needsConfirmation ? `Código enviado a ${email}` : "Gestiona tus tareas con AWS"}
             </p>
 
             <div className="form-group">
